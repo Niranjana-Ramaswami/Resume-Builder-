@@ -1,12 +1,15 @@
-# React + Vite
+# resume builder creation -steps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Create react project using command : npm create vite@latest pro-name -- --tempalte react
+2. Remove unwanted files
+3. Run the react app
+4. Installing 3rd party libraries
+  - Material UI - npm install @mui/material @emotion/react @emotion/styled
+  - React Icon - npm install react-icons --save
+  - React bootstrap
+5. Create Componets
+   - Create page folder
+   - Create component folder
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+6. Setup URL for components
+  - install react-router-dom -->  npm i react-router-dom
