@@ -6,12 +6,45 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { IoMdClose } from "react-icons/io";
 
 const steps = ['Basic Informations', 'Contact Details', 'Education Details', 'Work Experience', 'Skills & Certifications', 'Review and Submit'];
 
+
 function Steps() {
+  const skillSugestionArray = ['Node j s','Express','MongoDB','CSS',"HTML",'Git','Tailwind'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  /* state for storing user input data */
+  const [userInput,setUserInput]=React.useState({
+    personalData:{
+       name:'',
+       jobTitle:'',
+       location:'',
+       email:'',
+       phone:'',
+       github:'',
+       linkedin:'',
+       portfolio:''
+    },
+      education :{
+        Course:'',
+        Year:"",
+      jobRole:'',
+      company:'',
+      jobLocation:'',
+      duration:'',
+      College:'',
+      University:""
+    },
+
+    skills:[],
+    summary:''
+     
+    
+  })
+console.log(userInput);
+
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -59,9 +92,9 @@ function Steps() {
         <div>
           <h3>Personal Details</h3>
           <div className="d-flex row p-3">
-            <TextField id="standard-basic-name" label="Full Name" variant="standard" />
-            <TextField id="standard-basic-job" label="Job Title" variant="standard" />
-            <TextField id="standard-basic-location" label="Location" variant="standard" />
+            <TextField id="standard-basic-name" label="Full Name" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, name: e.target.value } })}/>
+            <TextField id="standard-basic-job" label="Job Title" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, jobTitle: e.target.value } })} />
+            <TextField id="standard-basic-location" label="Location" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, location: e.target.value } })}/>
           </div>
         </div>
 
@@ -70,11 +103,11 @@ function Steps() {
         <div>
           <h3>Contact Details</h3>
           <div className="d-flex row p-3">
-            <TextField id="standard-basic-mail" label="Email" variant="standard" />
-            <TextField id="standard-basic-phone" label="Phone Number" variant="standard" />
-            <TextField id="standard-basic-github" label="Github Profile Link" variant="standard" />
-            <TextField id="standard-basic-linkedin" label="Linkedin Profile Link" variant="standard" />
-            <TextField id="standard-basic-portfolio" label=" Portfolio Link" variant="standard" />
+            <TextField id="standard-basic-mail" label="Email" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, email: e.target.value } })} />
+            <TextField id="standard-basic-phone" label="Phone Number" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, phone: e.target.value } })} />
+            <TextField id="standard-basic-github" label="Github Profile Link" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, github: e.target.value } })} />
+            <TextField id="standard-basic-linkedin" label="Linkedin Profile Link" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, linkedin: e.target.value } })} />
+            <TextField id="standard-basic-portfolio" label=" Portfolio Link" variant="standard" onChange={e => setUserInput({ ...userInput, personalData: { ...userInput.personalData, portfolio: e.target.value } })}/>
           </div>
         </div>
 
@@ -83,10 +116,10 @@ function Steps() {
         <div>
           <h3>Education Details</h3>
           <div className="d-flex row p-3">
-            <TextField id="standard-basic-course" label="Course Name" variant="standard" />
-            <TextField id="standard-basic-college" label="College" variant="standard" />
-            <TextField id="standard-basic-university" label="University " variant="standard" />
-            <TextField id="standard-basic-year" label="Year of Passout " variant="standard" />
+            <TextField id="standard-basic-course" label="Course Name" variant="standard" onChange={e => setUserInput({ ...userInput, education: { ...userInput.education, Course: e.target.value } })} />
+            <TextField id="standard-basic-college" label="College" variant="standard" onChange={e => setUserInput({ ...userInput, education: { ...userInput.education, College: e.target.value } })} />
+            <TextField id="standard-basic-university" label="University " variant="standard" onChange={e => setUserInput({ ...userInput, education: { ...userInput.education, University: e.target.value } })} />
+            <TextField id="standard-basic-year" label="Year of Passout " variant="standard" onChange={e => setUserInput({ ...userInput, education: { ...userInput.education, Year: e.target.value } })} />
 
           </div>
         </div>
@@ -108,9 +141,24 @@ function Steps() {
       case 4: return (
         <div>
           <h3>Skills</h3>
-          <div className="d-flex row p-3">
-            <TextField id="standard-basic-skill" label="Add Skills" variant="standard" />
+          <div className="d-flex align-items-center justify-content-between p-3">
+            <TextField sx={{width:'400px'}} id="standard-basic-skill" label="Add Skills" variant="standard" />
+            <Button variant="text">Add</Button>
+          </div>
+          <h5>Suggestions:</h5>
+          <div className="d-flex flex-wrap justify-content-between my-3">
+            
+            {
+                            skillSugestionArray.map(userSkill=>(
+                              <Button className='m-1' key={userSkill} variant='outlined'>{userSkill}</Button>
+                            ))
 
+            }
+
+          </div>
+          <h5>Added Skills:</h5>
+          <div className="d-flex flex-wrap justify-content-between my-3">
+            <span className="btn btn-primary">React <button className='text-light btn'><IoMdClose /></button></span>
           </div>
         </div>
 

@@ -29,7 +29,7 @@ export default function ResumeGenerator() {
           </div>
         </div>
       </div>
-<a href='User'>
+<a href='form'>
   
         <button  className="btn btn-dark mt-4">LET'S START</button>
 </a>

@@ -1,42 +1,72 @@
-import React from 'react'
+import React from 'react';
 import Box from '@mui/material/Box';
-import { Divider, Paper } from '@mui/material';
-import { Link } from '@mui/material';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { Divider, Paper, Stack, Button } from '@mui/material';
+import { Link } from 'react-router-dom'; 
+import { FaFileDownload, FaHistory } from 'react-icons/fa';
+import Edit from './Edit';
 
 function Preview() {
   return (
+    <>
+      {/* Top Action Bar */}
+      <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ p: 2 }}>
+        {/* Download */}
+        <button className="btn fs-3" style={{ color: "rgb(21, 70, 77)" }}>
+            <FaFileDownload />
+          </button>
 
-<div style={{ marginTop: '100px' }}>
-        <Box component="section" >
-        <Paper elevation={3} sx={{textAlign:'center',p:2}}>
+        {/* Edit */}
+        <div className="btn fs-3" style={{ color: "rgb(21, 70, 77)" }}>
+            <Edit />
+          </div>
+
+        {/* History */}
+        <Link to="/history" className="btn fs-3" style={{ color: "rgb(21, 70, 77)" }}>
+            <FaHistory />
+          </Link>
+
+        {/* Back */}
+        <Link to="/resume" className="btn fs-3" style={{ color: "rgb(21, 70, 77)" }}>
+            BACK
+          </Link>
+        </Stack>
+
+      {/* Resume Preview Section */}
+      <Box component="section">
+        <Paper elevation={3} sx={{ my: 5, p: 5, textAlign: 'center' }}>
+          {/* Header */}
           <h2>Name</h2>
           <h6>Job Title</h6>
-          <p><span>location</span>|<span>Email</span>|<span>Phone</span></p>
+          <p><span>Location</span> | <span>Email</span> | <span>Phone</span></p>
           <p>
-            <Link href={""}>GitHub</Link>|
-            <Link href={""}>Linkedin</Link>|
-            <Link href={""}>Portfolio</Link>
+            <a href="#">GitHub</a> | 
+            <a href="#">LinkedIn</a> | 
+            <a href="#">Portfolio</a>
           </p>
-          <Divider sx={{ fontSize: '25px' }}>Summary</Divider>
-          <p className="fs-5 text-start">User Summary</p>
-          <Divider sx={{ fontSize: '25px', marginBottom: '10px' }}>Education</Divider>
-          <h5>User Education</h5>
-          <p><span>College</span>|<span>University</span>|<span>Year</span></p>
 
-          <Divider sx={{ fontSize: '25px', marginBottom: '10px' }}>Professional Experience</Divider>
+          {/* Summary */}
+          <Divider sx={{ fontSize: '25px', my: 3 }}>Summary</Divider>
+          <p className="fs-5 text-start">User Summary</p>
+
+          {/* Education */}
+          <Divider sx={{ fontSize: '25px', my: 3 }}>Education</Divider>
+          <h5>User Education</h5>
+          <p><span>College</span> | <span>University</span> | <span>Year</span></p>
+
+          {/* Experience */}
+          <Divider sx={{ fontSize: '25px', my: 3 }}>Professional Experience</Divider>
           <h5>User Job</h5>
-          <p><span>Company</span>|<span>Location</span>|<span>Duration</span></p>
-          <Divider sx={{ fontSize: '25px', marginBottom: '10px' }}> Skills</Divider>
-          <Stack spacing={2} direction="row" sx={{flexWrap:'wrap',gap:'10px'}}>
+          <p><span>Company</span> | <span>Location</span> | <span>Duration</span></p>
+
+          {/* Skills */}
+          <Divider sx={{ fontSize: '25px', my: 3 }}>Skills</Divider>
+          <Stack spacing={2} direction="row" sx={{ flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
             <Button variant="contained">User Skills</Button>
           </Stack>
         </Paper>
       </Box>
-
-    </div>
-  )
+    </>
+  );
 }
 
-export default Preview
+export default Preview;

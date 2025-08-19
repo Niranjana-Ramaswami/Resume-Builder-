@@ -7,7 +7,7 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 function Footer() {
   return (
     <footer
-      style={{ backgroundColor: "#007BFF", minHeight: "350px" }}
+      style={{ backgroundColor: "purple", minHeight: "350px" }}
       className="text-center d-flex flex-column justify-content-center align-items-center p-4 text-white"
     >
       <h1 className="mb-3">Contact Us</h1>
